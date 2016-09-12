@@ -1,16 +1,14 @@
 import $ from 'jquery';
 
 
-class RestaurantService
+export default class RestaurantService
 {
 
-    constructor(baseURL)
+    constructor()
     {
         
-        if (!baseURL)
-            this.rootURL = 'http://donhenton-springmvc3.herokuapp.com:80/app/backbone/restaurant';
-        else
-            this.rootURL = baseURL;
+        
+        this.rootURL = 'http://donhenton-springmvc3.herokuapp.com:80/app/backbone/restaurant';
         let me = this;
        
 
@@ -39,8 +37,6 @@ class RestaurantService
     }
 
 }
-let instance = new RestaurantService();
-export default instance;
 
 
 
