@@ -4,10 +4,11 @@ import { Component } from 'react';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router';
 import Holder from './components/holder';
 import MainContainer from './components/mainContainer'
-import Reducers from './reducers';
-import { createStore } from 'redux';
+        import reducers from './reducers';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import RestaurantDispatcher from './services/restaurantDispatcher';
+import promiseMiddleware from 'redux-promise-middleware';
+
 
 let createRoutes = () => {
 
@@ -35,8 +36,13 @@ if (loadedStates.indexOf(document.readyState) > -1 && document.body) {
 
 
 function run() {
+
+    let  store = createStore(reducers, {}, applyMiddleware(promiseMiddleware()));
+
+    //createStoreWithMiddleware(Reducers)
+    //const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
     ReactDom.render((
-<Provider store={createStore(Reducers)}>    
+<Provider store={store}>    
     <Router routes={createRoutes()} history={browserHistory} />
 </Provider>
 

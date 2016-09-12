@@ -20,7 +20,7 @@ export default class RestaurantService
         var self = this;
         return $.ajax({
             type: 'GET',
-            url: self.baseURL,
+            url: self.rootURL,
             timeout: 1500,
             success: function (data) {
                 return data;
