@@ -24,9 +24,9 @@ class ActionHandler
         return {'type': 'SET_ID', 'payload':  {'id': id.toString() }  } ;
     }
     
-    setCurrentReview(idx)
+    setCurrentReviewId(id)
     {
-        return {'type': 'SET_REVIEW_IDX', 'payload':  {'idx': idx }  } ;
+        return {'type': 'SET_REVIEW_ID', 'payload':  {'reviewId': id }  } ;
     }
 
 }
@@ -38,3 +38,6 @@ export  {init as initialize}; //export it to be available to react classes
 
 let setId = instance.setCurrentRestaurant.bind(instance);
 export {setId as setCurrentRestaurant};
+
+let setRev  = instance.setCurrentReviewId.bind(instance);
+export {setRev  as setCurrentReview};

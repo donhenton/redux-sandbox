@@ -29,9 +29,9 @@ class ReviewSelector extends Component
     generateSelector()
     {
         var me = this;
-        if (this.state.currentReviews.length == 0)
+        if (this.state.currentReviews.length === 0)
         {
-            return <em>No Reviews Available!</em>
+            return (<em>No Reviews Available!</em>);
         } else
         {
             var counter = 1;
@@ -56,7 +56,8 @@ class ReviewSelector extends Component
     onReviewSelectChange(ev)
     {
         console.log("reviewID change " + ev.target.value)
-        // Actions.setCurrentReviewId(ev.target.value);
+        this.setState({currentReviewId: ev.target.value})
+        this.props.setCurrentReview(ev.target.value);
     }
     render() {
 
