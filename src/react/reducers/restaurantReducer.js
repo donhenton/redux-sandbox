@@ -100,9 +100,17 @@ class RestaurantReducer
             case 'SET_REVIEW_ID':
                 let found = this.currentRestaurantItem.reviewDTOs
                         .filter((f)=> {
-                            f.id.toString() === action.payload.reviewId.toString();
+                          return  f.id.toString() === action.payload.reviewId.toString();
                 });
-                return found[0];
+                if (found && found.length && found.length === 1)
+                {
+                    return found[0];
+                }
+                else
+                {
+                    return state;
+                }
+                 
                 break;
 
             default:

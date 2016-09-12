@@ -6,6 +6,7 @@ import RestaurantDisplay from './restaurantDisplay';
 import {initialize} from './../actions/actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import ReviewDisplay from './reviewDisplay';
 
 class MainContainer extends Component {
 
@@ -41,7 +42,7 @@ class MainContainer extends Component {
         return (
 <section id="pageContainer">
     <section className="grouping" id="main">
-        <h2>Reflux Event Demo</h2>
+        <h2>Redux Demo</h2>
         <p  className='green-content'><em><bold>(components marked with dashed boxes)</bold></em></p>
         <div className="row grouping">
             <div className="columnLeft well">
@@ -60,7 +61,7 @@ class MainContainer extends Component {
 
         <div className="row grouping">
             <div className="columnRight">
-
+                <ReviewDisplay />
             </div>
 
         </div>
