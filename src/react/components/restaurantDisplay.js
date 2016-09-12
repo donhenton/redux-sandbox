@@ -16,12 +16,17 @@ class RestaurantDisplay extends Component {
 
 
     }
+    
+     componentWillReceiveProps(nextProps)
+    {
+        this.setState({currentRestaurant: nextProps.currentRestaurant});
+    }
 
     componentWillMount()
     {
 
 
-        this.state = {currentRestaurant: {},visible: false};;
+        this.state = {currentRestaurant: {},visible: false};
 
 
     }
@@ -54,7 +59,7 @@ class RestaurantDisplay extends Component {
 function mapStateToProps(state) {
 
     return {
-        currentRestaurantId: state.currentRestaurantId 
+        currentRestaurant: state.currentRestaurant 
     };
 }
  

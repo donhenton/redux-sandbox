@@ -54,7 +54,10 @@ class MainReducer
                 break;
 
             case "SET_ID":
-                return action.payload;
+                let foundItem = this.restaurants.filter((r) => {
+                    return r.id.toString() === action.payload.id.toString();
+                });
+                return foundItem[0];
                 break;
 
             default:
