@@ -1,10 +1,10 @@
 import {combineReducers } from 'redux';
-import {restaurants,currentRestaurantId,eventType} from './restaurantReducer';
+import {restaurants,currentRestaurant,eventType} from './restaurantReducer';
 
 
 const rootReducer = combineReducers({
   restaurants: restaurants,
-  currentRestaurantId: currentRestaurantId,
+  currentRestaurant: currentRestaurant,
   eventType: eventType
 });                     
 

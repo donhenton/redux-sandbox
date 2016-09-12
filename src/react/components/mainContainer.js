@@ -2,7 +2,7 @@ import React from 'react';
 import {Component} from 'react';
 import {render} from 'react-dom';
 import RestaurantSelector from './restaurantSelector';
-
+import RestaurantDisplay from './restaurantDisplay';
 
 
 export default class Main extends Component {
@@ -52,7 +52,7 @@ export default class Main extends Component {
                 </p>
             </div>
             <div className="columnRight">
-
+                <RestaurantDisplay />
             </div>
         </div>
 

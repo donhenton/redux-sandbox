@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { render } from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {initialize,setCurrentRestaurantId} from './../actions/actions';
+import {initialize,setCurrentRestaurant} from './../actions/actions';
 
 
 class RestaurantSelector extends Component
@@ -15,14 +15,14 @@ class RestaurantSelector extends Component
 
     componentWillMount()
     {
-        this.state = {eventType: 'test', restaurants: [],currentRestaurantId: -1,eventType: null}
+        this.state = {eventType: 'test', restaurants: [],currentRestaurant: {id: -1},eventType: null}
 
     }
     
     
     componentWillReceiveProps(nextProps)
     {
-        this.setState({restaurants: nextProps.restaurants,currentRestaurantId: nextProps.currentRestaurantId,eventType: nextProps.eventType});
+        this.setState({restaurants: nextProps.restaurants,currentRestaurant: nextProps.currentRestaurant,eventType: nextProps.eventType});
     }
 
     componentDidMount()
@@ -39,7 +39,7 @@ class RestaurantSelector extends Component
     selectorChange(ev)
     {
 
-          this.props.setCurrentRestaurantId(ev.target.value);
+          this.props.setCurrentRestaurant(ev.target.value);
 
     }
 
@@ -70,7 +70,7 @@ class RestaurantSelector extends Component
 
         return <div className="componentMarker restaurantSelector">
     <div className="row">
-        <select value={this.state.currentRestaurantId} className={this.computeCssClass()} onChange={this.selectorChange.bind(this)}>
+        <select value={this.state.currentRestaurant.id} className={this.computeCssClass()} onChange={this.selectorChange.bind(this)}>
             {this.generateChoices()}
         </select>
     </div>
@@ -78,7 +78,7 @@ class RestaurantSelector extends Component
         <br/>
         <div className="row">
             <em>Event Type: </em>
-            <span className="blue-color"> {this.state.eventType}</span> 
+            <span className="red-color"> {this.state.eventType}</span> 
         </div>
     </div>
 </div>
@@ -90,7 +90,7 @@ class RestaurantSelector extends Component
 function mapStateToProps(state) {
 
     return {
-        currentRestaurantId: state.currentRestaurantId,
+        currentRestaurant: state.currentRestaurant,
         restaurants: state.restaurants,
         eventType: state.eventType
     };
@@ -98,7 +98,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 
-    return bindActionCreators({initialize,setCurrentRestaurantId}, dispatch);
+    return bindActionCreators({initialize,setCurrentRestaurant}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantSelector);

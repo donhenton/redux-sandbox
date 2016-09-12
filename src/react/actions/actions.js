@@ -19,7 +19,7 @@ class ActionHandler
         return {type: 'INITIALIZE', 'payload': payload};
     }
     
-    setCurrentRestaurantId(id)
+    setCurrentRestaurant(id)
     {
         return {'type': 'SET_ID', 'payload':  {'id': id.toString() }  } ;
     }
@@ -31,5 +31,5 @@ let instance = new ActionHandler(); // the instance of the class
 let init = instance.initialize.bind(instance); // bind the function of the instance to 'this'
 export  {init as initialize}; //export it to be available to react classes
 
-let setId = instance.setCurrentRestaurantId.bind(instance);
-export {setId as setCurrentRestaurantId};
+let setId = instance.setCurrentRestaurant.bind(instance);
+export {setId as setCurrentRestaurant};
