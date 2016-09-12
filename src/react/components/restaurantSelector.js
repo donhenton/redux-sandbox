@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { render } from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {initialize,setCurrentRestaurant} from './../actions/actions';
+import {setCurrentRestaurant} from './../actions/actions';
 
 
 class RestaurantSelector extends Component
@@ -25,11 +25,7 @@ class RestaurantSelector extends Component
         this.setState({restaurants: nextProps.restaurants,currentRestaurant: nextProps.currentRestaurant,eventType: nextProps.eventType});
     }
 
-    componentDidMount()
-    {
-        //ask for data
-        this.props.initialize();
-    }
+ 
 
 //    onChange(event, data) {
 //
@@ -98,7 +94,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 
-    return bindActionCreators({initialize,setCurrentRestaurant}, dispatch);
+    return bindActionCreators({setCurrentRestaurant}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantSelector);

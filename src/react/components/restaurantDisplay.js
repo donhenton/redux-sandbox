@@ -2,6 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 import { render } from 'react-dom';
 import { connect } from 'react-redux';
+import ReviewSelector from './reviewSelector'
 class RestaurantDisplay extends Component {
 
     constructor()
@@ -44,7 +45,7 @@ class RestaurantDisplay extends Component {
             </table>
             <div className="row">
             
-           
+           <ReviewSelector />
             
             </div>
              

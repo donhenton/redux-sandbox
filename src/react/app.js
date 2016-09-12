@@ -38,6 +38,8 @@ if (loadedStates.indexOf(document.readyState) > -1 && document.body) {
 function run() {
 
     let  store = createStore(reducers, {}, applyMiddleware(promiseMiddleware()));
+    
+    //todo get the restaurants as a promise then dispatch the initialization action
 
     //createStoreWithMiddleware(Reducers)
     //const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);

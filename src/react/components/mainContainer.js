@@ -3,9 +3,11 @@ import {Component} from 'react';
 import {render} from 'react-dom';
 import RestaurantSelector from './restaurantSelector';
 import RestaurantDisplay from './restaurantDisplay';
+import {initialize} from './../actions/actions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-
-export default class Main extends Component {
+class MainContainer extends Component {
 
     constructor()
     {
@@ -16,8 +18,8 @@ export default class Main extends Component {
 
     componentDidMount()
     {
-
-
+        //ask for data
+        this.props.initialize();
     }
 
     componentWillMount()
@@ -74,5 +76,10 @@ export default class Main extends Component {
 
     }
 }
+///////////////
+function mapDispatchToProps(dispatch) {
 
-//<DisplayContainer showTextArea="true"/>
+    return bindActionCreators({initialize}, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(MainContainer);

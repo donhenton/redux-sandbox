@@ -23,6 +23,11 @@ class ActionHandler
     {
         return {'type': 'SET_ID', 'payload':  {'id': id.toString() }  } ;
     }
+    
+    setCurrentReview(idx)
+    {
+        return {'type': 'SET_REVIEW_IDX', 'payload':  {'idx': idx }  } ;
+    }
 
 }
 
