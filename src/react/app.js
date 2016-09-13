@@ -4,10 +4,11 @@ import { Component } from 'react';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router';
 import Holder from './components/holder';
 import MainContainer from './components/mainContainer'
-        import reducers from './reducers';
-import { createStore, applyMiddleware } from 'redux';
+import reducers from './reducers';
+import { createStore} from 'redux';
 import { Provider } from 'react-redux';
-import promiseMiddleware from 'redux-promise-middleware';
+import RestaurantService from './services/restaurantService';
+
 
 
 let createRoutes = () => {
@@ -37,12 +38,8 @@ if (loadedStates.indexOf(document.readyState) > -1 && document.body) {
 
 function run() {
 
-    let  store = createStore(reducers, {}, applyMiddleware(promiseMiddleware()));
-    
-    //todo get the restaurants as a promise then dispatch the initialization action
-
-    //createStoreWithMiddleware(Reducers)
-    //const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+    let  store = createStore(reducers);
+    RestaurantService.setStore(store);
     ReactDom.render((
 <Provider store={store}>    
     <Router routes={createRoutes()} history={browserHistory} />

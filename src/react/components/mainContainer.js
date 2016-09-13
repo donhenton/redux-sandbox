@@ -3,12 +3,12 @@ import {Component} from 'react';
 import {render} from 'react-dom';
 import RestaurantSelector from './restaurantSelector';
 import RestaurantDisplay from './restaurantDisplay';
-import {initialize} from './../actions/actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReviewDisplay from './reviewDisplay';
+import RestaurantService from './../services/restaurantService';
 
-class MainContainer extends Component {
+export default class MainContainer extends Component {
 
     constructor()
     {
@@ -20,7 +20,8 @@ class MainContainer extends Component {
     componentDidMount()
     {
         //ask for data
-        this.props.initialize();
+        RestaurantService.getAllRestaurants();
+         
     }
 
     componentWillMount()
@@ -46,7 +47,7 @@ class MainContainer extends Component {
         <p  className='green-content'><em><bold>(components marked with dashed boxes)</bold></em></p>
         <div className="row grouping">
             <div className="columnLeft well">
-                <RestaurantSelector />
+                 <RestaurantSelector />
                 <br/>
                 <p className="row">
                     The currently selected restaurant and review are maintained
@@ -61,7 +62,7 @@ class MainContainer extends Component {
 
         <div className="row grouping">
             <div className="columnRight">
-                <ReviewDisplay />
+                
             </div>
 
         </div>
@@ -77,10 +78,5 @@ class MainContainer extends Component {
 
     }
 }
-///////////////
-function mapDispatchToProps(dispatch) {
-
-    return bindActionCreators({initialize}, dispatch);
-}
-
-export default connect(null, mapDispatchToProps)(MainContainer);
+ 
+ 

@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {setCurrentRestaurant} from './../actions/actions';
+import RestaurantService from './../services/restaurantService';
 
 
 class RestaurantSelector extends Component
@@ -15,7 +16,7 @@ class RestaurantSelector extends Component
 
     componentWillMount()
     {
-        this.state = {eventType: 'test', restaurants: [],currentRestaurant: {id: -1},eventType: null}
+        this.state = {restaurants: [],currentRestaurant: {id: -1},eventType: null}
 
     }
     
@@ -25,17 +26,11 @@ class RestaurantSelector extends Component
         this.setState({restaurants: nextProps.restaurants,currentRestaurant: nextProps.currentRestaurant,eventType: nextProps.eventType});
     }
 
- 
-
-//    onChange(event, data) {
-//
-//        // this.setState({restaurants: data.restaurants, currentRestaurantId: data.currentRestaurantId, visible: true, eventType: event})
-//    }
 
     selectorChange(ev)
     {
 
-          this.props.setCurrentRestaurant(ev.target.value);
+          RestaurantService.setCurrentRestaurant(ev.target.value);
 
     }
 

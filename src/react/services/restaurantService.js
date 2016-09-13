@@ -1,44 +1,75 @@
-import $ from 'jquery';
 
+import RestaurantDao from './restaurantDao';
+import {initialize, selectRestaurant} from './../actions/actions';
+import utils from './../utils/utils';
 
-export default class RestaurantService
+class RestaurantService
 {
 
     constructor()
     {
-        
-        
-        this.rootURL = 'http://donhenton-springmvc3.herokuapp.com:80/app/backbone/restaurant';
-        let me = this;
-       
+        this.dao = new RestaurantDao();
+        this.store = null;
+        this.currentRestaurant = null;
+        this.currentReview = null;
+        this.currentRestaurantKey = null;
+        this.currentReviewKey = null;
+        this.restaurants = null;
+    }
 
+    setStore(store)
+    {
+        this.store = store;
+    }
+
+    generateStateMessage()
+    {
+
+
+
+        let message = {
+            restaurants: this.restaurants,
+            currentRestaurant: this.currentRestaurant,
+            currentReviews: this.currentReviews,
+            selectedReview: this.selectedReview
+        }
+
+        return message;
     }
 
     getAllRestaurants()
     {
+        this.dao.getAllRestaurants()
+                .then((data) => {
+                    this.restaurants = data;
+                    this.currentRestaurant = data[2];
+                    this.currentReviews = data[2].reviewDTOs;
+                    this.selectedReview = data[2].reviewDTOs[0];
+                    this.store.dispatch(initialize(this.generateStateMessage()));
+                })
+    }
 
-        var self = this;
-        return $.ajax({
-            type: 'GET',
-            url: self.rootURL,
-            timeout: 1500,
-            success: function (data) {
-                return data;
-            },
-            error: function (err) {
-                console.log('Error: Restaurant Problem');
-                console.log(err);
-                throw new Error(err.message)
-                
-            }
+    setCurrentRestaurant(idStr)
+    {
+        let foundItem = this.restaurants.filter((r) => {
+            return r.id.toString() === idStr;
         });
+        if (foundItem && foundItem.length)
+        {
+            this.currentRestaurant = foundItem[0];
+            this.currentReviews = this.currentRestaurant.reviewDTOs;
+            this.selectedReview = this.currentRestaurant.reviewDTOs[0];
+        }
+
+        this.store.dispatch(selectRestaurant(this.generateStateMessage()));
 
 
     }
 
 }
 
-
+let instance = new RestaurantService();
+export default instance;
 
 
 

@@ -7,23 +7,17 @@ class RestaurantReducer
 
     constructor()
     {
-        this.restaurants = null;
-        this.currentRestaurantId = null;
-        this.currentRestaurantItem = null;
+
     }
 
-    restaurantStateFunction(state = {}, action)
+    restaurantsStateFunction(state = {}, action)
     {
         switch (action.type)
         {
-            case "INITIALIZE_PENDING":
-            case "INITIALIZE_REJECTED":
 
-                return [];
-                break;
-            case "INITIALIZE_FULFILLED":
-                this.restaurants = action.payload;
-                return  action.payload;
+            case "INITIALIZE":
+
+                return  action.payload.restaurants;
                 break;
 
             default:
@@ -46,39 +40,33 @@ class RestaurantReducer
     {
         switch (action.type)
         {
-            case "INITIALIZE_PENDING":
-            case "INITIALIZE_REJECTED":
 
-                return state;
-                break;
-            case "INITIALIZE_FULFILLED":
-                let initRestaurant = action.payload[2];
-                this.currentRestaurantId = initRestaurant.id;
-                this.currentRestaurantItem = initRestaurant;
-                return  initRestaurant;
-                break;
-
-            case "SET_ID":
-                let foundItem = this.restaurants.filter((r) => {
-                    return r.id.toString() === action.payload.id.toString();
-                });
-                this.currentRestaurantId = action.payload.id.toString();
-                this.currentRestaurantItem = foundItem[0];
-                return foundItem[0];
+            case "INITIALIZE":
+            case "SELECT_RESTAURANT":
+                return  action.payload.currentRestaurant;
                 break;
 
             default:
                 return state;
-    }
+        }
 
     }
 
     currentReviewsFunction(state = {}, action)
     {
-        if (!this.currentRestaurantItem)
-            return state;
-        else
-            return this.currentRestaurantItem.reviewDTOs;
+         switch (action.type)
+        {
+
+            case "INITIALIZE":
+            case "SELECT_RESTAURANT":    
+                return  action.payload.currentReviews;
+                break;
+
+             
+
+            default:
+                return state;
+        }
     }
 
     selectedReviewFunction(state = {}, action)
@@ -86,31 +74,26 @@ class RestaurantReducer
 
         switch (action.type)
         {
-            case "INITIALIZE_PENDING":
-            case "INITIALIZE_REJECTED":
 
-                return state;
-                break;
-            case "INITIALIZE_FULFILLED":
-            case "SET_ID":
+            case "INITIALIZE":
+            case "SELECT_RESTAURANT":  
 
-                return this.currentRestaurantItem.reviewDTOs[0];
+                return action.payload.selectedReview;
                 break;
 
             case 'SET_REVIEW_ID':
                 let found = this.currentRestaurantItem.reviewDTOs
-                        .filter((f)=> {
-                          return  f.id.toString() === action.payload.reviewId.toString();
-                });
+                        .filter((f) => {
+                            return  f.id.toString() === action.payload.reviewId.toString();
+                        });
                 if (found && found.length && found.length === 1)
                 {
                     return found[0];
-                }
-                else
+                } else
                 {
                     return state;
                 }
-                 
+
                 break;
 
             default:
@@ -134,7 +117,7 @@ class RestaurantReducer
 }
 
 let instance = new RestaurantReducer();
-let rState = instance.restaurantStateFunction.bind(instance);
+let rState = instance.restaurantsStateFunction.bind(instance);
 let cState = instance.currentRestaurant.bind(instance);
 let eType = instance.eventType.bind(instance);
 let currRev = instance.currentReviewsFunction.bind(instance);
