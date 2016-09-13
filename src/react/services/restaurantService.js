@@ -43,7 +43,7 @@ class RestaurantService
         }
 
         return {type: type, 'payload': payload};
-        ;
+         
     }
 
     /**
