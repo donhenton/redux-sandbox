@@ -9,7 +9,8 @@ class RestaurantService
         this.dao = new RestaurantDao();
         this.store = null;
         this.currentRestaurant = null;
-        this.currentReview = null;
+        this.currentReviews = null;
+        this.selectedReview = null;
         this.restaurants = null;
     }
 
