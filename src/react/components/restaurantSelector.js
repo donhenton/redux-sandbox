@@ -3,7 +3,6 @@ import { Component } from 'react';
 import { render } from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {setCurrentRestaurant} from './../actions/actions';
 import RestaurantService from './../services/restaurantService';
 
 

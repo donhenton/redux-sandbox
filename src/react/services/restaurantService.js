@@ -1,6 +1,5 @@
 
 import RestaurantDao from './restaurantDao';
-import {initialize, selectRestaurant, selectReview} from './../actions/actions';
 import utils from './../utils/utils';
 
 class RestaurantService
@@ -22,19 +21,19 @@ class RestaurantService
         this.store = store;
     }
 
-    generateStateMessage()
+    generateAction(type)
     {
 
 
 
-        let message = {
+        let payload = {
             restaurants: this.restaurants,
             currentRestaurant: this.currentRestaurant,
             currentReviews: this.currentReviews,
             selectedReview: this.selectedReview
         }
 
-        return message;
+        return {type: type, 'payload': payload};;
     }
 
     getAllRestaurants()
@@ -45,7 +44,7 @@ class RestaurantService
                     this.currentRestaurant = data[2];
                     this.currentReviews = data[2].reviewDTOs;
                     this.selectedReview = data[2].reviewDTOs[0];
-                    this.store.dispatch(initialize(this.generateStateMessage()));
+                    this.store.dispatch(this.generateAction('INITIALIZE'));
                 })
     }
 
@@ -61,7 +60,7 @@ class RestaurantService
             this.selectedReview = this.currentRestaurant.reviewDTOs[0];
         }
 
-        this.store.dispatch(selectRestaurant(this.generateStateMessage()));
+        this.store.dispatch(this.generateAction('SELECT_RESTAURANT'));
 
 
     }
@@ -76,7 +75,7 @@ class RestaurantService
         {
             this.selectedReview = found[0];
         }
-        this.store.dispatch(selectReview(this.generateStateMessage()));
+        this.store.dispatch(this.generateAction('SELECT_REVIEW'));
     }
 
 }
