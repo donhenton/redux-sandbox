@@ -1,4 +1,3 @@
-
 import RestaurantDao from './restaurantDao';
 import utils from './../utils/utils';
 
@@ -11,8 +10,6 @@ class RestaurantService
         this.store = null;
         this.currentRestaurant = null;
         this.currentReview = null;
-        this.currentRestaurantKey = null;
-        this.currentReviewKey = null;
         this.restaurants = null;
     }
 

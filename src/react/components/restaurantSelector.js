@@ -67,7 +67,7 @@ class RestaurantSelector extends Component
     <div className="row"> 
          
         <div className="row">
-            <em>Event Type: </em>
+            <em>Redux Action: </em>
             <span className="red-color event"> {this.state.eventType}</span> 
         </div>
     </div>

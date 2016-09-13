@@ -22,7 +22,7 @@ class RestaurantReducer
 
             default:
                 return state;
-    }
+        }
     }
 
     eventType(state = {}, action)
@@ -44,7 +44,7 @@ class RestaurantReducer
 
             default:
                 return state;
-    }
+        }
 
     }
 
@@ -62,7 +62,7 @@ class RestaurantReducer
 
             default:
                 return state;
-    }
+        }
     }
 
     selectedReviewFunction(state = {}, action)
@@ -82,7 +82,7 @@ class RestaurantReducer
 
             default:
                 return state;
-    }
+        }
 
 
 
