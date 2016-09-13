@@ -45,14 +45,22 @@ export default class MainContainer extends Component {
     <section className="grouping" id="main">
         <h2>Redux Demo</h2>
         <p  className='green-content'><em><bold>(components marked with dashed boxes)</bold></em></p>
-        <div className="row grouping">
+        <div className="grouping">
             <div className="columnLeft well">
                 <RestaurantSelector />
                 <br/>
                 <p className="row">
-                    The currently selected restaurant and review are maintained
-                    in  the restaurant store. Components merely signal to the store to change
-                    the pointers. Passing state via props is not used.
+                    The restaurant service maintains the in-memory copy of the restaurants, current restaurant
+                    and review. It handles the defaults for reviews, when selecting a new restaurant. The service
+                    then composes the reducer content, and passing it thru. There are <b>NO</b> specific action function
+                    in a separate folder.
+                 
+                </p>
+                <p className="row">
+                    React components contain no mappings for actions, instead they call the RestaurantService directly, 
+                    when then responds indirectly by dispatching actions, which change the state of the components 
+                    via the react-redux state bindings.
+                 
                 </p>
             </div>
             <div className="columnRight">

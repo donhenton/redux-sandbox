@@ -16,11 +16,22 @@ class RestaurantService
         this.restaurants = null;
     }
 
+    /**
+     * set the reference to the redux store
+     * @param {type} store
+     * @returns {undefined}
+     */
     setStore(store)
     {
         this.store = store;
     }
 
+    /**
+     * Generate the actions that set the redux store
+     * 
+     * @param {type} type
+     * @returns {RestaurantService.generateAction.restaurantServiceAnonym$0}
+     */
     generateAction(type)
     {
 
@@ -33,9 +44,14 @@ class RestaurantService
             selectedReview: this.selectedReview
         }
 
-        return {type: type, 'payload': payload};;
+        return {type: type, 'payload': payload};
+        ;
     }
 
+    /**
+     * REST call to get the list of restaurants
+     * @returns {undefined}
+     */
     getAllRestaurants()
     {
         this.dao.getAllRestaurants()

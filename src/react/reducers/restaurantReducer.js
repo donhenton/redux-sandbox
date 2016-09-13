@@ -27,13 +27,9 @@ class RestaurantReducer
 
     eventType(state = {}, action)
     {
-        switch (action.type)
-        {
 
+        return action.type;
 
-            default:
-                return action.type;
-    }
     }
 
     currentRestaurant(state = {}, action)

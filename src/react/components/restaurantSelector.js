@@ -65,10 +65,10 @@ class RestaurantSelector extends Component
         </select>
     </div>
     <div className="row"> 
-        <br/>
+         
         <div className="row">
             <em>Event Type: </em>
-            <span className="red-color"> {this.state.eventType}</span> 
+            <span className="red-color event"> {this.state.eventType}</span> 
         </div>
     </div>
 </div>
