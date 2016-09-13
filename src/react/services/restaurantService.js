@@ -1,6 +1,6 @@
 
 import RestaurantDao from './restaurantDao';
-import {initialize, selectRestaurant} from './../actions/actions';
+import {initialize, selectRestaurant, selectReview} from './../actions/actions';
 import utils from './../utils/utils';
 
 class RestaurantService
@@ -64,6 +64,19 @@ class RestaurantService
         this.store.dispatch(selectRestaurant(this.generateStateMessage()));
 
 
+    }
+
+    setCurrentReview(idStr)
+    {
+        let found = this.currentReviews
+                .filter((f) => {
+                    return  f.id.toString() === idStr;
+                });
+        if (found && found.length && found.length === 1)
+        {
+            this.selectedReview = found[0];
+        }
+        this.store.dispatch(selectReview(this.generateStateMessage()));
     }
 
 }

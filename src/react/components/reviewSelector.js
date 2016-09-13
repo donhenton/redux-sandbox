@@ -4,6 +4,8 @@ import { render } from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {setCurrentReview} from './../actions/actions';
+import RestaurantService from './../services/restaurantService';
+
 class ReviewSelector extends Component
 {
     constructor()
@@ -57,7 +59,7 @@ class ReviewSelector extends Component
     {
         console.log("reviewID change " + ev.target.value)
         this.setState({currentReviewId: ev.target.value})
-        this.props.setCurrentReview(ev.target.value);
+        RestaurantService.setCurrentReview(ev.target.value);
     }
     render() {
 
@@ -84,9 +86,6 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
 
-    return bindActionCreators({setCurrentReview}, dispatch);
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ReviewSelector);
+export default connect(mapStateToProps, null)(ReviewSelector);

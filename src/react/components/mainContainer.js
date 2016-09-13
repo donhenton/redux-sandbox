@@ -21,7 +21,7 @@ export default class MainContainer extends Component {
     {
         //ask for data
         RestaurantService.getAllRestaurants();
-         
+
     }
 
     componentWillMount()
@@ -47,7 +47,7 @@ export default class MainContainer extends Component {
         <p  className='green-content'><em><bold>(components marked with dashed boxes)</bold></em></p>
         <div className="row grouping">
             <div className="columnLeft well">
-                 <RestaurantSelector />
+                <RestaurantSelector />
                 <br/>
                 <p className="row">
                     The currently selected restaurant and review are maintained
@@ -57,15 +57,16 @@ export default class MainContainer extends Component {
             </div>
             <div className="columnRight">
                 <RestaurantDisplay />
+                <div className="row grouping">
+
+                    <ReviewDisplay />
+
+
+                </div>
             </div>
         </div>
 
-        <div className="row grouping">
-            <div className="columnRight">
-                
-            </div>
 
-        </div>
     </section>
 </section>
                 )
@@ -78,5 +79,5 @@ export default class MainContainer extends Component {
 
     }
 }
- 
+
  

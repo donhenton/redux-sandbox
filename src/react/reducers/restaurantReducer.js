@@ -48,25 +48,25 @@ class RestaurantReducer
 
             default:
                 return state;
-        }
+    }
 
     }
 
     currentReviewsFunction(state = {}, action)
     {
-         switch (action.type)
+        switch (action.type)
         {
 
             case "INITIALIZE":
-            case "SELECT_RESTAURANT":    
+            case "SELECT_RESTAURANT":
                 return  action.payload.currentReviews;
                 break;
 
-             
+
 
             default:
                 return state;
-        }
+    }
     }
 
     selectedReviewFunction(state = {}, action)
@@ -76,41 +76,20 @@ class RestaurantReducer
         {
 
             case "INITIALIZE":
-            case "SELECT_RESTAURANT":  
+            case "SELECT_RESTAURANT":
+            case 'SELECT_REVIEW':
 
                 return action.payload.selectedReview;
                 break;
 
-            case 'SET_REVIEW_ID':
-                let found = this.currentRestaurantItem.reviewDTOs
-                        .filter((f) => {
-                            return  f.id.toString() === action.payload.reviewId.toString();
-                        });
-                if (found && found.length && found.length === 1)
-                {
-                    return found[0];
-                } else
-                {
-                    return state;
-                }
 
-                break;
 
             default:
                 return state;
-        }
-
-
-        if (!this.currentRestaurantItem)
-            return state;
-        else
-        {
-            let selectedRev = this.currentRestaurantItem.reviewDTOs
-                    .filter((rev) => {
-                        return (rev.id.toString()) === action.payload.reviewId.toString();
-                    })
-            return selectedRev[0];
     }
+
+
+
 
     }
 

@@ -87,9 +87,6 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+ 
 
-    return bindActionCreators({setCurrentRestaurant}, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(RestaurantSelector);
+export default connect(mapStateToProps, null)(RestaurantSelector);

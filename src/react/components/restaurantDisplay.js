@@ -45,7 +45,7 @@ class RestaurantDisplay extends Component {
             </table>
             <div className="row">
             
-           
+           <ReviewSelector />
             
             </div>
              
