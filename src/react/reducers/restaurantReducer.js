@@ -9,6 +9,20 @@ class RestaurantReducer
     {
 
     }
+    loadingFunction(state = {}, action)
+    {
+        switch (action.type)
+        {
+
+            case "INITIALIZE":
+
+                return  false;
+                break;
+
+            default:
+                return true;
+        }
+    }
 
     restaurantsStateFunction(state = {}, action)
     {
@@ -97,10 +111,12 @@ let cState = instance.currentRestaurant.bind(instance);
 let eType = instance.eventType.bind(instance);
 let currRev = instance.currentReviewsFunction.bind(instance);
 let selRev = instance.selectedReviewFunction.bind(instance);
+let loadType = instance.loadingFunction.bind(instance);
 export {rState as restaurants};
 export {cState as currentRestaurant};
 export {eType as eventType};
 export {currRev as currentReviews};
 export {selRev as selectedReview};
+export {loadType as loading};
 
 export default instance;

@@ -5,6 +5,8 @@
 @import "components/tables";
 @import "components/tableHeader";
 @import "components/buttons";
+@import "components/waitComponent";
+
 /* hello  sssddss */
  
 body
@@ -65,6 +67,10 @@ section#pageContainer
 
     }
 
+    .hidden
+    {
+        display: none;
+    }
     header
     {
         background-color: $blue-color;
@@ -77,7 +83,7 @@ section#pageContainer
     {
 
         width: 1200px;
-
+        position: relative;
         border: 5px double $blue-color;
         margin: 10px auto 5px auto;
         background-color: white;

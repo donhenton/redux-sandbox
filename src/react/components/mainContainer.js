@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReviewDisplay from './reviewDisplay';
 import RestaurantService from './../services/restaurantService';
+import WaitComponent from './waitComponent';
+
 
 export default class MainContainer extends Component {
 
@@ -43,6 +45,7 @@ export default class MainContainer extends Component {
         return (
 <section id="pageContainer">
     <section className="grouping" id="main">
+        <WaitComponent/>
         <h2>Redux Demo</h2>
         <p  className='green-content'><em><bold>(components marked with dashed boxes)</bold></em></p>
         <div className="grouping">
@@ -73,7 +76,7 @@ export default class MainContainer extends Component {
                 </div>
             </div>
         </div>
-
+        
 
     </section>
 </section>

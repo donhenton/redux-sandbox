@@ -1,5 +1,5 @@
 import {combineReducers } from 'redux';
-import {restaurants,currentRestaurant,eventType,currentReviews,selectedReview} from './restaurantReducer';
+import {loading,restaurants,currentRestaurant,eventType,currentReviews,selectedReview} from './restaurantReducer';
 
 
 const rootReducer = combineReducers({
@@ -7,7 +7,8 @@ const rootReducer = combineReducers({
   currentRestaurant: currentRestaurant,
   currentReviews: currentReviews,
   selectedReview: selectedReview,
-  eventType: eventType
+  eventType: eventType,
+  loading: loading
 });                     
 
 export default rootReducer;
