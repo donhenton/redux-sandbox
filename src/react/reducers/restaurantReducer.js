@@ -9,7 +9,7 @@ class RestaurantReducer
     {
 
     }
-    loadingFunction(state = {}, action)
+    loadingFunction(state = true, action)
     {
         switch (action.type)
         {
@@ -20,7 +20,7 @@ class RestaurantReducer
                 break;
 
             default:
-                return true;
+                return state;
         }
     }
 
